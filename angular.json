@@ -24,7 +24,6 @@
             "tsConfig": "tsconfig.app.json",
             "assets": [
               "src/api",
-              "src/blog-index.html",
               "src/favicon.ico",
               "src/assets"
             ],
