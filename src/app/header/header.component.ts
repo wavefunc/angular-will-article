@@ -9,11 +9,13 @@ export class HeaderComponent implements OnInit {
   title = 'demo2';
   url = 'http://blog.miniasp.com/';
   imgurl = '/assets/images/logo.png';
+  counter = 0;
 
   constructor() { }
   changeTitle(altKey: boolean) {
     if (altKey)
       this.title = 'The Edward Web';
+    this.counter++;
   }
 
   ngOnInit(): void {
