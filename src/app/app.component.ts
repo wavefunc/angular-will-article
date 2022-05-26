@@ -8,9 +8,16 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'demo2';
   url = 'http://blog.miniasp.com/';
-  constructor(){
-    setTimeout(() => {
+  imgurl = '/assets/images/logo.png';
+  keyword = '';
+
+  constructor() {
+  }
+  changeTitle(altKey: boolean) {
+    if (altKey)
       this.title = 'The Edward Web';
-    }, 2000);
+  }
+  keywordReset() {
+    this.keyword = '';
   }
 }

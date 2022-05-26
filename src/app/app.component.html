@@ -25,10 +25,11 @@
   <div class="title-wrapper">
     <div class="container">
 
-      <img src="/assets/images/logo.png" class="pull-left logo" alt="The Will Will Web">
+      <img (click)='changeTitle($event.altKey)' [title]="title" [src]="imgurl" class="pull-left logo"
+        alt="The Will Will Web">
 
       <div class="pull-left">
-        <h1><a href="{{ url }}">{{ title }}</a></h1>
+        <h1><a [href]="url">{{ title }}</a></h1>
         <h3>記載著 Will 在網路世界的學習心得與技術分享</h3>
       </div>
 
@@ -160,8 +161,10 @@
         <div class="widget search">
           <div class="widget-content">
             <div id="searchbox">
-              <input type="text" placeholder="請輸入搜尋關鍵字" accesskey="s">
+              <input #tkeyword type="text" [(ngModel)]="keyword" (keyup.escape)="keywordReset()" placeholder="請輸入搜尋關鍵字"
+                accesskey="s">
               <input type="button" value="搜尋" id="searchbutton">
+              關鍵字：{{ keyword }} 目前字數：{{ keyword.length }}
             </div>
           </div>
         </div>
