@@ -7,6 +7,7 @@ import { Page2Component } from './page2/page2.component';
 import { FormsModule } from '@angular/forms';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { ArticleModule } from './article/article.module';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { FooterComponent } from './footer/footer.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ArticleModule
   ],
   providers: [],
   bootstrap: [AppComponent]
