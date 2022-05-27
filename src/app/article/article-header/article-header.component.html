@@ -1,7 +1,9 @@
 <header class="post-header">
   <h2 class="post-title">
-    <a [href]="item.href">{{ item['subject']?.title|lowercase|slice:-20 }}</a>
-    <span>{{ $any(item).subject?.subtitle}}</span>
+    <a *ngIf="!isEdit" [href]="item.href">{{ newTitle }}</a><br>
+    <input *ngIf="isEdit" type="text" [value]="newTitle" size="70"
+      (keyup.enter)="doEdit($any($event.target).value)"
+      (keyup.escape)="$any($event.target).value = newTitle; isEdit=false">
   </h2>
   <div class="post-info clearfix">
     <span class="post-date"><i class="glyphicon glyphicon-calendar"></i>{{ item.date }}</span>
@@ -9,6 +11,8 @@
         href="http://blog.miniasp.com/author/will.aspx">{{ item.author }}</a></span>
     <span class="post-category"><i class="glyphicon glyphicon-folder-close"></i><a [href]="item['category-link']">{{
         item.category }}</a></span>
-    <span><button (click)="deleteArticle()">刪除文章</button></span>
+    <span><button *ngIf="!isEdit" (click)="deleteArticle()">刪除文章</button></span>
+    <span><button *ngIf="!isEdit" (click)="isEdit = true">編輯標題</button></span>
+    <span><button *ngIf="isEdit" (click)="isEdit = false">取消編輯</button></span>
   </div>
 </header>

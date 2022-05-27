@@ -15,15 +15,21 @@ export class ArticleListComponent implements OnInit {
     this.data = this.data.filter(v => v !== item);
   }
 
+  changeTitle($event: any) {
+    this.data = this.data.map(item => {
+      if(item.id === $event.id){
+        return Object.assign({}, item, $event);
+      }
+    });
+
+  }
+
   ngOnInit(): void {
     this.data = [
       {
         "id": 1,
         "href": "http://blog.miniasp.com/post/2016/04/30/Visual-Studio-Code-from-Command-Prompt-notes.aspx",
-        "subject": {
-          "title": "從命令提示字元中開啟 Visual Studio Code 如何避免顯示惱人的偵錯訊息",
-          "subtitle": "test"
-        },
+        "title": "從命令提示字元中開啟 Visual Studio Code 如何避免顯示惱人的偵錯訊息",
         "date": "2016/04/30 18:05",
         "author": "Will 保哥",
         "category": "Visual Studio",
@@ -42,10 +48,7 @@ export class ArticleListComponent implements OnInit {
       {
         "id": 3,
         "href": "http://blog.miniasp.com/post/2016/03/14/ASPNET-MVC-Developer-Note-Part-28-Understanding-ModelState.aspx",
-        "subject": {
-          "title": "ASP.NET MVC 開發心得分享 (28)：深入瞭解 ModelState 內部細節",
-          "subtitle": ""
-        },
+        "title": "ASP.NET MVC 開發心得分享 (28)：深入瞭解 ModelState 內部細節",
         "date": "2016/03/14 12:14",
         "author": "Will 保哥",
         "category": "ASP.NET MVC",
@@ -55,10 +58,7 @@ export class ArticleListComponent implements OnInit {
       {
         "id": 4,
         "href": "http://blog.miniasp.com/post/2016/03/06/ASPNET-MVC-5-View-Roslyn-problem-workaround.aspx",
-        "subject": {
-          "title": "ASP.NET MVC 5.2.3 的 View 使用 Roslyn (C# 6.0) 編譯時的問題",
-          "subtitle": ""
-        },
+        "title": "ASP.NET MVC 5.2.3 的 View 使用 Roslyn (C# 6.0) 編譯時的問題",
         "date": "2016/03/06 17:11",
         "author": "Will 保哥",
         "category": "ASP.NET MVC",
@@ -68,10 +68,7 @@ export class ArticleListComponent implements OnInit {
       {
         "id": 5,
         "href": "http://blog.miniasp.com/post/2016/02/19/Useful-tool-PackageManagement-OneGet.aspx",
-        "subject": {
-          "title": "介紹好用工具：Win 10 內建的 PackageManagement 套件管理器 (OneGet)",
-          "subtitle": ""
-        },
+        "title": "介紹好用工具：Win 10 內建的 PackageManagement 套件管理器 (OneGet)",
         "date": "2016/02/19 11:55",
         "author": "Will 保哥",
         "category": "介紹好用工具",
@@ -81,10 +78,7 @@ export class ArticleListComponent implements OnInit {
       {
         "id": 6,
         "href": "http://blog.miniasp.com/post/2016/02/02/JavaScript-novice-advice-and-learning-resources.aspx",
-        "subject": {
-          "title": "我要成為前端工程師！給 JavaScript 新手的建議與學習資源整理",
-          "subtitle": ""
-        },
+        "title": "我要成為前端工程師！給 JavaScript 新手的建議與學習資源整理",
         "date": "2016/02/02 17:48",
         "author": "Will 保哥",
         "category": "前端工程研究",
