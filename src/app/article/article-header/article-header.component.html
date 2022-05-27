@@ -2,7 +2,7 @@
   <h2 class="post-title">
     <a *ngIf="!isEdit" [href]="item.href">{{ newTitle }}</a><br>
     <input *ngIf="isEdit" type="text" [value]="newTitle" size="70"
-      (keyup.enter)="doEdit($any($event.target).value)"
+      (keyup.enter)="doEdit($any($event.target).value); isEdit=false"
       (keyup.escape)="$any($event.target).value = newTitle; isEdit=false">
   </h2>
   <div class="post-info clearfix">
