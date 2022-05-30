@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { ArticleListComponent } from './article-list/article-list.component';
 import { ArticleHeaderComponent } from './article-header/article-header.component';
 import { ArticleBodyComponent } from './article-body/article-body.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -15,7 +16,8 @@ import { ArticleBodyComponent } from './article-body/article-body.component';
   ],
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   exports:[
     ArticleListComponent

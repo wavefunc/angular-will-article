@@ -12,7 +12,7 @@ export class HeaderComponent implements OnInit {
   counter = 0;
 
   constructor() { }
-  changeTitle(altKey: boolean) {
+  doModify(altKey: boolean) {
     if (altKey)
       this.title = 'The Edward Web';
     this.counter++;
