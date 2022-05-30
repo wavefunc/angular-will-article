@@ -1,6 +1,7 @@
 import { DataService } from './../../data.service';
 import { Component, OnInit } from '@angular/core';
 import { PageInfo } from 'src/app/viewmodel/type';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-article-list',
@@ -9,7 +10,7 @@ import { PageInfo } from 'src/app/viewmodel/type';
 })
 export class ArticleListComponent implements OnInit {
 
-  data: Array<PageInfo> = [] as Array<PageInfo>;
+  data$: Observable<any> = {} as Observable<any>;
 
   counter: number = 0;
 
@@ -18,30 +19,7 @@ export class ArticleListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.datasvc.getData().subscribe(result => {
-      this.data = result;
-    });
+    this.data$ = this.datasvc.getData();
   }
-
-  doDelete(item: PageInfo) {
-    this.datasvc.doDelete(item).subscribe({
-      next: result => this.data = this.data.filter(v => v.id !== item.id),
-      error: error => console.log(error)
-    })
-  }
-
-  doModify($event: PageInfo) {
-    this.datasvc.doModify($event).subscribe({
-      next: result => {
-        this.data = this.data.map(item => {
-          if (item.id === $event.id)
-            return Object.assign({}, item, $event);
-          return item;
-        })
-      },
-      error: error => console.log(error)
-    })
-  }
-
 
 }
