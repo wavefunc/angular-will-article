@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PageInfo } from 'src/app/viewmodel/type';
 
 @Component({
   selector: 'app-article-list',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ArticleListComponent implements OnInit {
 
-  data: any[] = [];
+  data: Array<PageInfo> = [] as Array<PageInfo>;
   counter: number = 0;
 
   constructor() {  }
@@ -21,6 +22,7 @@ export class ArticleListComponent implements OnInit {
       if(item.id === $event.id){
         return Object.assign({}, item, $event);
       }
+      return item;
     });
 
   }
