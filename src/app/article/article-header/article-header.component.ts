@@ -1,14 +1,16 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output, OnChanges, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-article-header',
   templateUrl: './article-header.component.html',
   styleUrls: ['./article-header.component.css']
 })
-export class ArticleHeaderComponent implements OnInit {
+export class ArticleHeaderComponent implements OnInit, OnDestroy, OnChanges {
 
   @Input()
   item: any;
+
+  orig_item: any;
 
   isEdit = false;
   newTitle = '';
@@ -26,13 +28,23 @@ export class ArticleHeaderComponent implements OnInit {
     this.delete.emit(this.item);
   }
 
-  doEdit(title: string) {
-    this.newTitle = title;
-    this.titleChanged.emit({id: this.item.id, title: title});
+  doCancel(){
+    this.item = Object.assign({}, this.orig_item);
+    this.isEdit = false;
+  }
+
+  doEdit() {
+    this.titleChanged.emit(this.item);
   }
 
   ngOnInit(): void {
-    this.newTitle = this.item.title;
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['item']) {
+      this.orig_item = changes['item'].currentValue;
+      this.item = Object.assign({}, changes['item'].currentValue)
+      }
   }
 
   ngOnDestroy(): void {

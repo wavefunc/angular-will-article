@@ -8,11 +8,12 @@ import { Component, OnInit } from '@angular/core';
 export class ArticleListComponent implements OnInit {
 
   data: any[] = [];
+  counter: number = 0;
 
-  constructor() { }
+  constructor() {  }
 
   doDelete(item: any) {
-    this.data = this.data.filter(v => v !== item);
+    this.data = this.data.filter(v => v.id !== item.id);
   }
 
   changeTitle($event: any) {
@@ -25,6 +26,10 @@ export class ArticleListComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    setTimeout(() => {
+      this.counter++;
+    }, 2000);
+
     this.data = [
       {
         "id": 1,
